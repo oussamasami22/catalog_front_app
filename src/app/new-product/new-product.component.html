@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Styles</title>
+    <style>
+        :root {
+            --master-border-radius: 6px;
+            --master-text-align: left;
+            --form-width: 780px;
+            --form-font-family: Montserrat;
+            --form-font-size: 18px;
+            --form-font-weight: normal;
+            --form-font-style: normal;
+            --form-font-line-height: 1.2em;
+            --form-background-color: #f6f6f6;
+            --form-background-image: url();
+            --form-background-repeat: no-repeat;
+            --form-background-size: cover;
+            --form-background-position: center;
+            --form-background-attachment: scroll;
+            --input-normal-color: #2a302c;
+            --input-normal-border-color: rgba(50, 77, 37, .12);
+            --input-normal-background-color: #ebf2df;
+            --input-error-border-color: #ff0000;
+            --input-error-background-color: rgba(255, 0, 0, .1);
+            --input-hover-border-color: rgba(28, 43, 20, 0.12);
+            --input-hover-background-color: rgba(253, 253, 252, .81);
+            --input-font-family: Montserrat;
+            --input-font-size: 14px;
+            --input-font-weight: normal;
+            --input-font-style: normal;
+            --input-font-line-height: 1.2em;
+            --input-padding-vertical: 14px;
+            --input-padding-horizontal: 8px;
+            --input-border-width: 1px;
+            --input-border-style: solid;
+            --input-border-radius: 8px;
+            --button-font-family: Montserrat;
+            --button-font-size: 17px;
+            --button-font-weight: bold;
+            --button-font-style: normal;
+            --button-line-height: 2em;
+            --button-border-radius: 10px;
+            --button-border-width: 1px;
+            --button-border-style: solid;
+            --button-padding-horizontal: 40px;
+            --button-padding-vertical: 8px;
+            --button-primary-normal-background-color: #b1d788;
+            --button-primary-normal-border-color: transparent;
+            --button-primary-normal-color: #383634;
+            --button-primary-hover-background-color: #98ca62;
+            --button-primary-hover-border-color: transparent;
+            --button-primary-hover-color: #1e1c1b;
+            --button-primary-disabled-background-color: rgba(76, 76, 76, .5);
+            --button-primary-disabled-border-color: transparent;
+            --button-primary-disabled-color: #ffffff;
+        }
+
+        #form[data-loader-type="viewer"] {
+            padding-bottom: 40px;
+            padding-top: 40px;
+            min-height: 100%;
+        }
+
+        #form {
+            background-color: #f6f6f6;
+            font-family: var(--form-font-family);
+            font-size: var(--form-font-size);
+            position: relative;
+            display: block;
+            padding: 0;
+            margin: 0;
+            min-height: 10px;
+            box-sizing: border-box;
+        }
+
+        #form, #form * {
+            box-sizing: border-box;
+        }
+
+        #form div[data-role="control"]:not(:hover):not([data-is-selected]):not([data-disabled]):not([data-is-active]):not([data-has-errors]) div[data-role="label"],
+        #form div[data-role="control"]:not(:hover):not([data-is-selected]):not([data-disabled]):not([data-is-active]):not([data-has-errors]) label[data-role="label"],
+        #form div[data-role="container"][data-type="likert-wrapper"]:not(:hover):not([data-is-selected]):not([data-disabled]):not([data-is-active]):not([data-has-errors]) label[data-role="label"] {
+            color: var(--input-normal-color);
+        }
+    </style>
+</head>
+<body>
+   
+    <form [formGroup]="productFormGroup" (ngSubmit)="handleAddProduct()" id="form" data-loader-type="viewer" data-form-is-embedded="1">
+        <div class="mb-3">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-control" formControlName="name" required>
+            <small *ngIf="productFormGroup.controls['name'].errors && productFormGroup.controls['name'].touched" class="text-danger">
+               {{ prodService.getErrorMesssag('Product Name',productFormGroup.controls['name'].errors)}}
+            </small>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Price</label>
+            <input type="text" class="form-control" formControlName="price" required>
+            <small *ngIf="productFormGroup.controls['price'].errors && productFormGroup.controls['price '].touched" class="text-danger">
+                {{ prodService.getErrorMesssag('Product Price',productFormGroup.controls['price'].errors)}}
+             </small>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Promotion</label>
+            <input type="checkbox" formControlName="promoted" class="form-check-input">
+        </div>
+        <button [disabled]="!productFormGroup.valid" type="submit" class="btn btn-info">Save Product</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards Example</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .background-radial-gradient {
+      background-color: hsl(218, 41%, 15%);
+      background-image: radial-gradient(650px circle at 0% 0%,
+          hsl(218, 41%, 35%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+          hsl(218, 41%, 45%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%);
+    }
+
+    #radius-shape-1 {
+      height: 220px;
+      width: 220px;
+      top: -60px;
+      left: -130px;
+      background: radial-gradient(#44006b, #ad1fff);
+      overflow: hidden;
+    }
+
+    #radius-shape-2 {
+      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+      bottom: -60px;
+      right: -110px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#44006b, #ad1fff);
+      overflow: hidden;
+    }
+
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+    }
+  </style>
+</head>
+<body>
+  <div class="background-radial-gradient overflow-hidden">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SAMI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li>
+                <a class="nav-link ">
+                    {{ authService.authenticatedUser!.useremail }}
+                </a>
+                
+            </li>
+            <li><a class="btn nav-link" (click)="handleLogout()">
+                <i class="bi bi-box-arrow-right"></i>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Optionally, you can include shapes if you want them visible on the authenticated layout -->
+    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+    
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Products</h5>
+              <p class="card-text">Manage your products here.</p>
+              <a routerLink="/admin/products" class="btn btn-primary">Go to Products</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Customers</h5>
+              <p class="card-text">Manage your customers here.</p>
+              <a routerLink="/admin/customers" class="btn btn-primary">Go to Customers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

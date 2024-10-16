@@ -1,0 +1,13 @@
+<div class="fullscreen-center">
+    <div class="button-container">
+      <button (click)="showWarningIcon()" class="btn btn-primary">
+        Customers
+      </button>
+    </div>
+  
+    <div *ngIf="showWarning" class="warning-container">
+      <i class="bi bi-slash-circle-fill text-danger" style="font-size: 2rem;"></i>
+      <p class="text-danger mt-2">Update needed</p>
+    </div>
+  </div>
+  

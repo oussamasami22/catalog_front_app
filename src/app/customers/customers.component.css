@@ -1,0 +1,43 @@
+/* Centrer le contenu verticalement et horizontalement */
+.fullscreen-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  /* Espacement pour le bouton et l'icône avec le message */
+  .button-container, .warning-container {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  /* Ajustement des marges pour différentes tailles d'écran */
+  @media (max-width: 768px) {
+    .button-container, .warning-container {
+      margin-top: 0.5rem;
+    }
+  }
+  
+  /* Styles spécifiques pour les petits écrans */
+  @media (max-width: 576px) {
+    .button-container, .warning-container {
+      margin-top: 0.25rem;
+    }
+  
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+    }
+  
+    .bi-slash-circle-fill {
+      font-size: 1.5rem;
+    }
+  
+    .text-danger {
+      font-size: 0.875rem;
+    }
+  }
+  

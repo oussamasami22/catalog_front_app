@@ -1,0 +1,75 @@
+<div class="container-fluid px-4">
+  <nav class="p-2 m-2 border border-info d-flex justify-content-center">
+    <button *ngIf="authService.hasRole('ADMIN')" class="btn btn btn-outline-info" (click)="handleNewProduct()">New Product</button>
+  </nav>
+  
+    <div class="row">
+      <div class="col-12">
+        <ng-template #errors>
+          <div class="text-danger">{{ errorMessage }}</div>
+        </ng-template>
+
+        <div class="card h-100" *ngIf="products; else errors">
+          <div class="card-header">Products List</div>
+          <div class="card-body p-0">
+
+           
+            <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchProducts()">
+                <div class="input-group">
+                    <label class="input-group-text"> Keyword : </label>
+                        <input type="text" class="form-control" formControlName="keyword">
+                        <button class="btn btn-info">
+                            <i class="bi bi-search">
+
+                            </i>
+
+                        </button>
+                    
+
+                </div>
+            </form>
+            <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Promotion</th>
+                <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of products">
+                  <td>{{ p.id }}</td>
+                  <td>{{ p.name }}</td>
+                  <td>{{ p.price }}</td>
+                  <td>
+                    <i *ngIf="p.promotion" class="bi bi-heart-fill text-success"></i>
+                  </td>
+                  <td *ngIf="authService.hasRole('ADMIN')">
+                    <button (click)="handleSetPromotion(p)" [ngClass]="p.promotion ? 'btn-danger' : 'btn-success'" class="btn">
+                      <span *ngIf="p.promotion">Promo Off</span>
+                      <span *ngIf="!p.promotion">Promo On</span>
+                    </button>
+                    <button (click)="handleDeleteProduct(p)" class="btn btn-danger ms-2">
+                      <i class="bi bi-trash"></i>
+                    </button>
+
+                    <button (click)="handleEditProduct(p)" class="btn btn-success ms-2">
+                      <i class="bi bi-pencil-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li *ngFor="let item of [].constructor(this.totalPages); let i =index">
+                 <a (click)="gotoPage(i)"  [ngClass]="i==currentPage?'btn-info':'btn-outline-info'"  class="btn ms-1 mt-1">{{i}}</a>   
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

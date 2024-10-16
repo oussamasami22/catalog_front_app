@@ -1,0 +1,82 @@
+/* products.component.css or global styles.css */
+
+/* Container and Card Styles */
+.container-fluid {
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .card {
+    height: 100%; /* Full height of the container */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-body {
+    flex: 1 1 auto; /* Allow card body to grow and fill available space */
+    padding: 0; /* Remove padding */
+    overflow-x: auto; /* Add horizontal scroll if needed */
+  }
+  
+  /* Table Styles */
+  .table {
+    width: 100%;
+    margin-bottom: 0; /* Remove margin at the bottom */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .table thead th {
+    background-color: #343a40; /* Dark header */
+    color: white; /* White text */
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+  }
+  
+  .table td, .table th {
+    vertical-align: middle; /* Center align vertically */
+    text-align: center; /* Center align horizontally */
+  }
+  
+  /* Button Styles */
+  .btn {
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  .btn:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  .btn-success {
+    background-color: #28a745; /* Custom success color */
+    border: none; /* Remove border */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* Custom danger color */
+    border: none; /* Remove border */
+  }
+  
+  .btn-outline-success {
+    border-color: #28a745; /* Custom outline color */
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #28a745; /* Change background on hover */
+    color: white; /* White text on hover */
+  }
+  
+  /* Responsive Table */
+  .table-responsive-md {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+  }
+  
+  @media (max-width: 767.98px) {
+    .table-responsive-md {
+      border: 0; /* Remove border for small screens */
+    }
+  }
+  
