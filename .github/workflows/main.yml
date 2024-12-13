@@ -34,22 +34,24 @@ jobs:
         name: build-artifacts
         path: dist/
 
-    
-    - name: Run SonarQube Scan
-      env:
-          SONAR_TOKEN: ${{ secrets.SONARTOKEN  }}
+    - name: Install SonarCloud Scanner
       run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=${{ secrets.PROJET_KEY }} \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=${{ secrets.ORGANISATION }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN  }}
-    
+        npm install -g sonar-scanner
+
+    - name: Run SonarCloud Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONARTOKEN }}
+      run: |
+        sonar-scanner \
+          -Dsonar.projectKey=${{ secrets.PROJET_KEY }} \
+          -Dsonar.organization=${{ secrets.ORGANISATION }} \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+          -Dsonar.host.url=https://sonarcloud.io
 
     - name: Set up Docker Build
       run: |
         docker build -t angular-app:latest .
-      
+
     # - name: Push Docker image to DockerHub
     #   run: |
         # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
