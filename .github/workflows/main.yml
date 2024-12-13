@@ -19,7 +19,8 @@ jobs:
     - name: Set up Java 17
       uses: actions/setup-java@v3
       with:
-        java-version: '17' 
+        java-version: '17'
+        distribution: 'temurin' 
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -55,10 +56,4 @@ jobs:
 
     - name: Set up Docker Build
       run: |
-        docker build -t angular-app:latest .
-
-    # - name: Push Docker image to DockerHub
-    #   run: |
-        # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        # docker tag angular-app:latest ${{ secrets.DOCKER_USERNAME }}/angular-app:latest
-        # docker push ${{ secrets.DOCKER_USERNAME }}/angular-app:latest
+        docker 
