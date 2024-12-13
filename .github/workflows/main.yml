@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '17'
-        distribution: 'temurin' 
+        distribution: 'temurin'
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -52,8 +52,9 @@ jobs:
           -Dsonar.projectKey=${{ secrets.PROJET_KEY }} \
           -Dsonar.organization=${{ secrets.ORGANISATION }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.analysis.mode=CI  # Disable Automatic Analysis
 
     - name: Set up Docker Build
       run: |
-        docker 
+        docker build -t angular-app:latest .
