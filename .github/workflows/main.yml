@@ -34,17 +34,17 @@ jobs:
         name: build-artifacts
         path: dist/
 
-    - name: Set up SonarCloud
-      uses: SonarSource/sonarcloud-github-action@v1
-      with:
-        sonar-token: ${{ secrets.SONAR_TOKEN }}
-        projectKey: ${{ secrets.PROJET_KEY }}
-        organization: ${{ secrets.ORGANISATION }}
-
-    - name: Run SonarCloud analysis
+    
+    - name: Run SonarQube Scan
+      env:
+          SONAR_TOKEN: ${{ secrets.SONARTOKEN  }}
       run: |
-        npm install -g sonar-scanner
-        sonar-scanner
+          mvn sonar:sonar \
+            -Dsonar.projectKey=${{ secrets.PROJET_KEY }} \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=${{ secrets.ORGANISATION }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN  }}
+    
 
     - name: Set up Docker Build
       run: |
