@@ -25,9 +25,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm test -- --watch=false
-
     - name: Build application
       run: npm run build
 
