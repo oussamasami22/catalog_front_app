@@ -26,6 +26,11 @@ jobs:
 
     - name: Build application
       run: npm run build
+    - name: Set up Docker Build
+      run: |
+          docker --version 
+          docker build -t angular-app:latest . 
+
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
