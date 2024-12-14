@@ -30,6 +30,10 @@ jobs:
       run: |
           docker --version 
           docker build -t angular-app:latest . 
+    - name: Run Trivy Scan
+      run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/trivy-cache:/root/.cache/trivy aquasec/trivy:latest image angular-app:latest
+
 
 
     - name: Upload build artifact
