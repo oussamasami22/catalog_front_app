@@ -21,6 +21,7 @@
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "catalog": "file:",
     "rjx": "^3.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
