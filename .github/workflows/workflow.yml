@@ -43,7 +43,7 @@ jobs:
       run: |
         npm install -g sonar-scanner
 
-    - name: Run SonarCloud Scan
+    # - name: Run SonarCloud Scan
       # env:
       #   SONAR_TOKEN: ${{ secrets.SONARTOKEN }}
       # run: |
